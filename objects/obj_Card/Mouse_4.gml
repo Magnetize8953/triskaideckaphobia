@@ -1,0 +1,1 @@
+alarm[0] = flip_speed;

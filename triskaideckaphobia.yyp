@@ -35,13 +35,19 @@
   "name":"triskaideckaphobia",
   "resources":[
     {"id":{"name":"obj_Button","path":"objects/obj_Button/obj_Button.yy",},},
+    {"id":{"name":"obj_Card","path":"objects/obj_Card/obj_Card.yy",},},
+    {"id":{"name":"obj_Game","path":"objects/obj_Game/obj_Game.yy",},},
+    {"id":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},},
+    {"id":{"name":"rm_GameRoom","path":"rooms/rm_GameRoom/rm_GameRoom.yy",},},
     {"id":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},},
     {"id":{"name":"spr_Button","path":"sprites/spr_Button/spr_Button.yy",},},
+    {"id":{"name":"spr_Cards","path":"sprites/spr_Cards/spr_Cards.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},},
+    {"roomId":{"name":"rm_GameRoom","path":"rooms/rm_GameRoom/rm_GameRoom.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
