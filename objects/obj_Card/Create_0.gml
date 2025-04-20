@@ -9,3 +9,4 @@ image_yscale = scale;
 face_down = false;
 flip_speed = 2;
 flip_scale = 0.05;
+flipping = false;

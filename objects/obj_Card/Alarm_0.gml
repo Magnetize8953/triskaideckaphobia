@@ -12,6 +12,7 @@ if (image_xscale != 0) {
     alarm[1] = flip_speed;
 }
 
-if (image_xscale < 0) {
+if (image_xscale <= 0) {
     image_xscale = 0;
+    alarm[2] = 15;
 }
