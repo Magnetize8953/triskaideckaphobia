@@ -7,6 +7,8 @@ for (i = 1; i <= 52; i++) {
 randomize();
 ds_list_shuffle(deck);
 
+for (i = 0; i < 52; i++) { show_debug_message(ds_list_find_value(deck, i)) }
+
 global.pot = ds_list_create();
 player_1_hand = ds_list_create();
 player_2_hand = ds_list_create();
@@ -15,22 +17,22 @@ player_3_hand = ds_list_create();
 
 // arrange and sort deck into hands
 show_debug_message("Sorting hands...");
-for (i = 1; i <= 13; i++) {
+for (i = 0; i <= 12; i++) {
     ds_list_add(global.pot, ds_list_find_value(deck, i));
 }
 ds_list_sort(global.pot, true);
 
-for (i = 14; i <= 26; i++) {
+for (i = 13; i <= 25; i++) {
     ds_list_add(player_1_hand, ds_list_find_value(deck, i));
 }
 ds_list_sort(player_1_hand, true);
 
-for (i = 27; i <= 39; i++) {
+for (i = 26; i <= 38; i++) {
     ds_list_add(player_2_hand, ds_list_find_value(deck, i));
 }
 ds_list_sort(player_2_hand, true);
 
-for (i = 40; i <= 52; i++) {
+for (i = 39; i <= 51; i++) {
     ds_list_add(player_3_hand, ds_list_find_value(deck, i));
 }
 ds_list_sort(player_3_hand, true);

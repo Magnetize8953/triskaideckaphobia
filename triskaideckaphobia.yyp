@@ -40,6 +40,8 @@
     {"id":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},},
     {"id":{"name":"rm_GameRoom","path":"rooms/rm_GameRoom/rm_GameRoom.yy",},},
     {"id":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},},
+    {"id":{"name":"scr_CompCard","path":"scripts/scr_CompCard/scr_CompCard.yy",},},
+    {"id":{"name":"scr_GetRank","path":"scripts/scr_GetRank/scr_GetRank.yy",},},
     {"id":{"name":"spr_Button","path":"sprites/spr_Button/spr_Button.yy",},},
     {"id":{"name":"spr_Cards","path":"sprites/spr_Cards/spr_Cards.yy",},},
   ],
