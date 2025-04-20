@@ -1,4 +1,6 @@
-        //TODO: OVERHAULED AFTER FIRST PLAYABLE
+points = 0;
+
+		//TODO: OVERHAULED AFTER FIRST PLAYABLE
 
 show_debug_message("Creating player " + string(num) + "...");
 // TODO: create positions for player 2, 3 on game level

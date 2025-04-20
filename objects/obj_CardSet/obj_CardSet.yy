@@ -1,20 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_Player",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_CardSet",
+  "eventList":[],
   "managed":true,
-  "name":"obj_Player",
+  "name":"obj_CardSet",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
     "path":"folders/Objects.yy",
   },
-  "parentObjectId":{
-    "name":"obj_CardSet",
-    "path":"objects/obj_CardSet/obj_CardSet.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -29,7 +24,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"num","filters":[],"listItems":[],"multiselect":false,"name":"num","rangeEnabled":false,"rangeMax":3.0,"rangeMin":1.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":1,},
+    {"$GMObjectProperty":"v1","%Name":"hand","filters":[],"listItems":[],"multiselect":false,"name":"hand","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":6,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

@@ -43,3 +43,6 @@ show_debug_message("Creating players...");
 instance_create_layer(0, 0, "Instances", obj_Player, { num: 1, hand: player_1_hand });
 instance_create_layer(0, 0, "Instances", obj_Player, { num: 2, hand: player_2_hand });
 instance_create_layer(0, 0, "Instances", obj_Player, { num: 3, hand: player_3_hand });
+
+show_debug_message("Creating pot tracker...");
+instance_create_layer(0, 0, "Instances", obj_Pot, { hand: global.pot});

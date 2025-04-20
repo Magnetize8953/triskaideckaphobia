@@ -9,7 +9,7 @@ function comp_card(card1, card2){
         return card1;
     } else if card2 > card1 {
         return card2;
-    } else {
+	} else {
         return -1;
     }
 }
