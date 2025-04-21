@@ -37,12 +37,21 @@ for (i = 39; i <= 51; i++) {
 }
 ds_list_sort(player_3_hand, true);
 
+global.hand_pool = ds_list_create();
+ds_list_concat(global.hand_pool, player_1_hand);
+ds_list_concat(global.hand_pool, player_2_hand);
+ds_list_concat(global.hand_pool, player_3_hand);
 
 // create players, give hands
 show_debug_message("Creating players...");
-instance_create_layer(0, 0, "Instances", obj_Player, { num: 1, hand: player_1_hand });
-instance_create_layer(0, 0, "Instances", obj_Player, { num: 2, hand: player_2_hand });
-instance_create_layer(0, 0, "Instances", obj_Player, { num: 3, hand: player_3_hand });
+global.player1 = instance_create_layer(0, 0, "Instances", obj_Player, { num: 1, hand: player_1_hand });
+global.player2 = instance_create_layer(0, 0, "Instances", obj_Player, { num: 2, hand: player_2_hand });
+global.player3 = instance_create_layer(0, 0, "Instances", obj_Player, { num: 3, hand: player_3_hand });
 
 show_debug_message("Creating pot tracker...");
 instance_create_layer(0, 0, "Instances", obj_Pot, { hand: global.pot});
+
+
+
+// TODO: REMOVE THIS DEBUGGING TOOL TO RESET HAND
+safe_guard = false;

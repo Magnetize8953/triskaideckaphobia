@@ -17,6 +17,5 @@ if (global.card_being_selected) {
 	self.x = room_width / 2;
 	self.y = room_height / 2;
 	
-	show_debug_message(global.pot);
 
 }
