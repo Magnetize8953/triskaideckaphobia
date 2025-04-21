@@ -1,3 +1,6 @@
+// Create turn tracker
+global.current_turn = 1;
+
 // create deck
 show_debug_message("Creating deck...");
 deck = ds_list_create();
