@@ -1,5 +1,5 @@
 global.current_turn = 1; // Create turn tracker
-global.stack_scale = 0.16; // Scale for cards on stack consistency
+global.stack_scale = 0.23; // Scale for cards on stack consistency
 
 // create deck
 show_debug_message("Creating deck...");
@@ -54,10 +54,6 @@ global.player3 = instance_create_layer(0, 0, "Instances", obj_Player, { num: 3, 
 show_debug_message("Creating pot tracker...");
 global.pot_obj = instance_create_layer(0, 0, "Instances", obj_Pot, { hand: global.pot});
 
-
-
-// TODO: REMOVE THIS DEBUGGING TOOL TO RESET HAND
-safe_guard = false;
 
 // Tracks if a base card has been selected
 global.base_card = false;
