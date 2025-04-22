@@ -11,5 +11,8 @@ if (in_pot != noone) { // If one exists
 		instance_destroy(in_pot);
 		self.x = room_width / 2;
 		self.y = room_height / 2;
+		image_xscale = global.stack_scale;
+		image_yscale = global.stack_scale;
+		image_angle = 0;
 	}
 }

@@ -8,3 +8,7 @@ if (keyboard_check_pressed(vk_space) and !safe_guard) {
 if (keyboard_check_pressed(vk_backspace)) {
 	next_turn();
 }
+
+if (keyboard_check(ord("B"))) {
+	base_selecting();
+}

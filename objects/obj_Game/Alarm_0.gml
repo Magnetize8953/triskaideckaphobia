@@ -24,10 +24,10 @@ for (i = 26; i <= 38; i++) {
 }
 ds_list_sort(player_3_hand, true);
 
-global.player1 = player_1_hand;
+global.player1.hand = player_1_hand;
 global.player1.update_hand = true;
-global.player2 = player_2_hand;
+global.player2.hand = player_2_hand;
 global.player2.update_hand = true;
-global.player3 = player_3_hand;
+global.player3.hand = player_3_hand;
 global.player3.update_hand = true;
 
