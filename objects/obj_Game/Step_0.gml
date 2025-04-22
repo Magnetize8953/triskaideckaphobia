@@ -18,3 +18,7 @@ if (keyboard_check(ord("B"))) {
 if (keyboard_check(ord("2"))) {
 	two_play_buttons();
 }
+
+if (keyboard_check (ord("H"))) {
+	honest_play();
+}

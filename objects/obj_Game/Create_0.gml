@@ -57,3 +57,6 @@ global.pot_obj = instance_create_layer(0, 0, "Instances", obj_Pot, { hand: globa
 
 // Tracks if a base card has been selected
 global.base_card = false;
+
+// A global tracker for a stack to be played 
+global.staging_cards = ds_stack_create();

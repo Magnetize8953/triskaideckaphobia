@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_HonestButton",
+  "%Name":"obj_PlayButton",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_HonestButton",
+  "name":"obj_PlayButton",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_DEVART_Honest",
-    "path":"sprites/spr_DEVART_Honest/spr_DEVART_Honest.yy",
+    "name":"spr_DEVART_Play",
+    "path":"sprites/spr_DEVART_Play/spr_DEVART_Play.yy",
   },
   "spriteMaskId":null,
   "visible":true,
