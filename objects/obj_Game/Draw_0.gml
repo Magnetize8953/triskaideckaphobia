@@ -1,0 +1,1 @@
+draw_text(room_width / 2 - 40, 90, "Current Player: " + string(global.current_turn));

@@ -3,4 +3,5 @@ function next_turn(){
 		global.current_turn = 1;
 	} else {
 		global.current_turn++;
+	}
 }

@@ -1,4 +1,4 @@
-show_debug_message("Creating card " + string(card_id) + "...");
+show_debug_message("Creating card " + string(card_id) + " associated with " + string(associated_player) + "...");
 image_speed = 0;
 image_index = card_id;
 
