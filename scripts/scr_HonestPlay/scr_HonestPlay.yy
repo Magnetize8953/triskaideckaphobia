@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_HonestPlay",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Turn Handling",
+    "path":"folders/Scripts/Turn Handling.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

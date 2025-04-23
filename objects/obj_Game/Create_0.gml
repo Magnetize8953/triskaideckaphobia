@@ -60,3 +60,7 @@ global.base_card = false;
 
 // A global tracker for a stack to be played 
 global.staging_cards = ds_stack_create();
+
+// Tracks which hands are being built
+global.building_honest_hand = false;
+global.building_bluffed_hand = false;

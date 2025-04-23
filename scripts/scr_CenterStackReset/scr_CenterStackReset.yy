@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_CenterStackReset",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"New Round Handling",
+    "path":"folders/Scripts/New Round Handling.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
