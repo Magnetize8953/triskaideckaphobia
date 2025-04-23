@@ -34,6 +34,9 @@ if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.bu
         ds_stack_push(global.pile, next_card);
     }
 	
+	// Make supposed_top the actual new top
+	global.supposed_top = ds_stack_top(global.pile).card_id;
+	
 	
 }
 if (global.hand_is_go) {

@@ -1,5 +1,5 @@
 global.current_turn = 1; // Create turn tracker
-global.stack_scale = 0.23; // Scale for cards on stack consistency
+global.stack_scale = 0.46; // Scale for cards on stack consistency
 
 // create deck
 show_debug_message("Creating deck...");
@@ -55,8 +55,9 @@ show_debug_message("Creating pot tracker...");
 global.pot_obj = instance_create_layer(0, 0, "Instances", obj_Pot, { hand: global.pot});
 
 
-// center pile of cards
+// center pile of cards and the top of it (or what it's supposed to be)
 global.pile = ds_stack_create();
+global.supposed_top = noone;
 
 // Tracks if a base card has been selected
 global.base_card = false;
@@ -68,6 +69,8 @@ global.staging_cards = ds_stack_create();
 global.building_honest_hand = false;
 global.building_bluffed_hand = false;
 
+/* MAY NOT BE NEEDED
 // Tracker for what's entered the stack 
 // TODO: implement use of 
 global.the_stack = ds_stack_create();
+*/

@@ -60,6 +60,7 @@
     {"id":{"name":"scr_PlayerTurn","path":"scripts/scr_PlayerTurn/scr_PlayerTurn.yy",},},
     {"id":{"name":"scr_TwoPlayButtons","path":"scripts/scr_TwoPlayButtons/scr_TwoPlayButtons.yy",},},
     {"id":{"name":"scr_ValidateStack","path":"scripts/scr_ValidateStack/scr_ValidateStack.yy",},},
+    {"id":{"name":"spr_Background","path":"sprites/spr_Background/spr_Background.yy",},},
     {"id":{"name":"spr_Button","path":"sprites/spr_Button/spr_Button.yy",},},
     {"id":{"name":"spr_Cards","path":"sprites/spr_Cards/spr_Cards.yy",},},
     {"id":{"name":"spr_DEVART_Bluff","path":"sprites/spr_DEVART_Bluff/spr_DEVART_Bluff.yy",},},

@@ -1,4 +1,4 @@
 function two_play_buttons(){
-	instance_create_layer(500, 530, "Instances", obj_HonestButton);
-	instance_create_layer(room_width - 500, 530, "Instances", obj_BluffButton);
+	instance_create_layer(1920 * (500/1366), 1080 * (573/768), "Instances", obj_HonestButton);
+	instance_create_layer(room_width - (1920 * (500/1366)), 1080 * (573/768), "Instances", obj_BluffButton);
 }

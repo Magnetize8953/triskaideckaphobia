@@ -5,6 +5,11 @@ if (!flipping) {
 }
 */
 
+
+show_debug_message("rank: " + string(get_rank(self.card_id)));
+show_debug_message("card id itself: " + string(self.card_id));
+
+
 // If an honest hand is being built and it's my turn (and also im not in the center)
 if (global.building_honest_hand and global.current_turn == self.associated_player.num and self.x != room_width / 2 and self.y != room_height / 2) {
 	// If there is no cards currently being queued, and the selected one can be played on the top of the stack
@@ -19,4 +24,5 @@ if (global.building_honest_hand and global.current_turn == self.associated_playe
 		ds_stack_pop(global.staging_cards);
 		self.y += 15;
 	}
+} else {
 }

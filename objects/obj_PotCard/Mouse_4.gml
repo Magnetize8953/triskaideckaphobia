@@ -1,3 +1,7 @@
+show_debug_message("rank: " + string(get_rank(self.card_id)));
+show_debug_message("card id itself: " + string(self.card_id));
+
+
 // TODO: Use this as a baseline for future loops through; need to reset 
 // card_was_selected next time a card is going to be selected
 
@@ -21,5 +25,7 @@ if (!global.base_card and global.card_being_selected) {
 	image_yscale = global.stack_scale;
 	
     ds_stack_push(global.pile, self);
+	
+	global.supposed_top = self.card_id;
 
 }
