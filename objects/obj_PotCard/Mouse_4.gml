@@ -13,7 +13,7 @@ if (!global.base_card and global.card_being_selected) {
 	// Remove card from the global pot
 	ds_list_delete(global.pot, ds_list_find_index(global.pot, self.card_id));
 	
-	// Move to center of the room
+	// Move to center of the room, and as deep as physically possible
 	self.x = room_width / 2;
 	self.y = room_height / 2;
 	

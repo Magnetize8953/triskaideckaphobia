@@ -11,8 +11,6 @@ if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.bu
 	show_debug_message("Current stack size: " + string(ds_stack_size(global.staging_cards)));
 	show_debug_message("Top of stack: " + string(ds_stack_top(global.staging_cards)));
 	
-	// destroy current card on top of stack
-	instance_destroy(instance_position(room_width / 2, room_height / 2, obj_Card));
     
     // reverse stack
     var staging_reversed = ds_stack_create();
@@ -30,7 +28,9 @@ if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.bu
         next_card.image_yscale = global.stack_scale;
         randomize();
         next_card.image_angle = random_range(0, 180);
-        next_card.depth = -i + -ds_stack_size(global.pile);
+        next_card.depth = -1 + -ds_stack_size(global.pile);
+		show_debug_message("next card depth: " + string(next_card.depth));
+		
         ds_stack_push(global.pile, next_card);
     }
 	

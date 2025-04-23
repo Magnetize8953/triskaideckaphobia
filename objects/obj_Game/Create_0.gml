@@ -67,3 +67,7 @@ global.staging_cards = ds_stack_create();
 // Tracks which hands are being built
 global.building_honest_hand = false;
 global.building_bluffed_hand = false;
+
+// Tracker for what's entered the stack 
+// TODO: implement use of 
+global.the_stack = ds_stack_create();
