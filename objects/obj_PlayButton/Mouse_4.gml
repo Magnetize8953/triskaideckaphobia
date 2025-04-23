@@ -13,17 +13,26 @@ if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.bu
 	
 	// destroy current card on top of stack
 	instance_destroy(instance_position(room_width / 2, room_height / 2, obj_Card));
-	
-	// Remove the new top card from your hand, move it to the top of the stack
-	var new_top = ds_stack_pop(global.staging_cards);
-	new_top.x = room_width / 2;
-	new_top.y = room_height / 2;
-	new_top.image_xscale = global.stack_scale;
-	new_top.image_yscale = global.stack_scale;
-	new_top.image_angle = 0;
-	
-	// Clear out the rest of the stack
-	clear_staged();
+    
+    // reverse stack
+    var staging_reversed = ds_stack_create();
+    var staging_size = ds_stack_size(global.staging_cards);
+    for (var i = 0; i < staging_size; i++) {
+        ds_stack_push(staging_reversed, ds_stack_pop(global.staging_cards));
+    }
+    
+    // moved staged stack to pile
+    for (var i = 0; i < staging_size; i++) {
+        var next_card = ds_stack_pop(staging_reversed);
+        next_card.x = room_width / 2;
+        next_card.y = room_height / 2;
+        next_card.image_xscale = global.stack_scale;
+        next_card.image_yscale = global.stack_scale;
+        randomize();
+        next_card.image_angle = random_range(0, 180);
+        next_card.depth = -i + -ds_stack_size(global.pile);
+        ds_stack_push(global.pile, next_card);
+    }
 	
 	
 }

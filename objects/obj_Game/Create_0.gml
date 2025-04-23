@@ -55,6 +55,9 @@ show_debug_message("Creating pot tracker...");
 global.pot_obj = instance_create_layer(0, 0, "Instances", obj_Pot, { hand: global.pot});
 
 
+// center pile of cards
+global.pile = ds_stack_create();
+
 // Tracks if a base card has been selected
 global.base_card = false;
 

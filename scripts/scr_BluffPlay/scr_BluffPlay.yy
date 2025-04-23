@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_BluffPlay",
   "parent":{
-    "name":"Turn Handling",
-    "path":"folders/Scripts/Turn Handling.yy",
+    "name":"TurnHandling",
+    "path":"folders/Scripts/TurnHandling.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
