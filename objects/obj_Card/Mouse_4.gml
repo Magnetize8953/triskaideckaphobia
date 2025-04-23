@@ -22,15 +22,3 @@ if (global.building_honest_hand and global.current_turn == self.associated_playe
 		self.y += 15;
 	}
 } 
-/*
-else if (in_pot != noone) { // If one exists
-	if (validate_stack(self.card_id, in_pot.card_id) and (global.current_turn == self.associated_player.num)) { // if clicked on card is a valid play and its your turn
-		instance_destroy(in_pot);
-		self.x = room_width / 2;
-		self.y = room_height / 2;
-		image_xscale = global.stack_scale;
-		image_yscale = global.stack_scale;
-		image_angle = 0;
-	}
-}
-*/
