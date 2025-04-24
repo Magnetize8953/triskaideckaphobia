@@ -1,13 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_PlayButton",
+  "%Name":"obj_NumberButton",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_PlayButton",
+  "name":"obj_NumberButton",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -28,14 +27,15 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"type","filters":[],"listItems":[],"multiselect":false,"name":"type","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
+    {"$GMObjectProperty":"v1","%Name":"num","filters":[],"listItems":[],"multiselect":false,"name":"num","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
+    {"$GMObjectProperty":"v1","%Name":"prompter","filters":[],"listItems":[],"multiselect":false,"name":"prompter","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_DEVART_Play",
-    "path":"sprites/spr_DEVART_Play/spr_DEVART_Play.yy",
+    "name":"spr_NumberButton",
+    "path":"sprites/spr_NumberButton/spr_NumberButton.yy",
   },
   "spriteMaskId":null,
   "visible":true,
