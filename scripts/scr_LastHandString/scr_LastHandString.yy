@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_LastHandString",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_LastHandString",
+  "parent":{
+    "name":"HandToString",
+    "path":"folders/Scripts/HandToString.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

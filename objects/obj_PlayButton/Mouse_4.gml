@@ -32,13 +32,16 @@ if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.bu
         randomize();
         next_card.image_angle = random_range(0, 180);
         next_card.depth = -1 + -ds_stack_size(global.pile);
-		show_debug_message("next card depth: " + string(next_card.depth));
+		ds_list_add(global.last_played_hand, next_card); // add to global last hand tracker
+		global.which_last_hand = "honest";
 		
         ds_stack_push(global.pile, next_card);
     }
 	
 	// Make supposed_top the actual new top
 	global.supposed_top = ds_stack_top(global.pile).card_id;
+	
+	update_last_hand_string("");
 	
 	
 }
