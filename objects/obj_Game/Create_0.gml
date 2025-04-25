@@ -74,3 +74,5 @@ global.building_bluffed_hand = false;
 // TODO: implement use of 
 global.the_stack = ds_stack_create();
 */
+
+show_debug_message("GLOBAL VARIABLE ******" + string(global.is_Premium) + "******");
