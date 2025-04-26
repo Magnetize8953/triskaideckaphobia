@@ -58,12 +58,12 @@ if (new_available > 0) {
 		
         randomize();
         next_card.new_angle = random_range(0, 180);
-        next_card.depth = -1 + -ds_stack_size(global.pile);
+        next_card.depth = -1 + -ds_list_size(global.pile);
 		
 		ds_list_add(global.last_played_hand, next_card); // add to global last hand tracker
 		global.which_last_hand = "bluff";
 		
-        ds_stack_push(global.pile, next_card);
+        ds_list_add(global.pile, next_card);
     }
 	
 	// update the displayed last played hand (needs bluff functionality added)

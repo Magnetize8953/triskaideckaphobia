@@ -56,7 +56,7 @@ global.pot_obj = instance_create_layer(0, 0, "Instances", obj_Pot, { hand: globa
 
 
 // center pile of cards and the top of it (or what it's supposed to be)
-global.pile = ds_stack_create();
+global.pile = ds_list_create();
 global.supposed_top = noone;
 
 // Tracks if a base card has been selected

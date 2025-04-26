@@ -21,3 +21,5 @@ new_y = -1;
 move_speed = 0;
 move_wait = 0;
 new_angle = 0;
+
+shader_depth = shader_get_uniform(shdr_Dim, "depth");

@@ -1,11 +1,3 @@
-/*
-if (!flipping) {
-    alarm[0] = flip_speed;
-    flipping = true;
-}
-*/
-
-
 show_debug_message("rank: " + string(get_rank(self.card_id)));
 show_debug_message("card id itself: " + string(self.card_id));
 
@@ -41,4 +33,6 @@ else if (global.building_bluffed_hand and global.current_turn == self.associated
 		ds_list_add(button.added_cards, self);
 		self.y -= 15;
 	} 
-} else { show_debug_message("That shouldn't have happened")}
+} else {
+    show_debug_message("That shouldn't have happened");
+}

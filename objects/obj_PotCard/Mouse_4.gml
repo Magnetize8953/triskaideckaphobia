@@ -24,7 +24,7 @@ if (!global.base_card and global.card_being_selected) {
 	image_xscale = global.stack_scale;
 	image_yscale = global.stack_scale;
 	
-    ds_stack_push(global.pile, self);
+    ds_list_add(global.pile, self);
 	
 	global.supposed_top = self.card_id;
 
