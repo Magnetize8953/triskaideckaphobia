@@ -25,12 +25,17 @@ if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.bu
     // moved staged stack to pile
     for (var i = 0; i < staging_size; i++) {
         var next_card = ds_stack_pop(staging_reversed);
-        next_card.x = room_width / 2;
-        next_card.y = room_height / 2;
+        next_card.new_x = room_width / 2;
+        next_card.new_y = room_height / 2;
+		next_card.move_speed = 19 + 1/(i-staging_size);
+		next_card.move_wait = i;
+		next_card.alarm[3] = 1;
+		
         next_card.image_xscale = global.stack_scale;
         next_card.image_yscale = global.stack_scale;
+		
         randomize();
-        next_card.image_angle = random_range(0, 180);
+        next_card.new_angle = random_range(0, 180);
         next_card.depth = -1 + -ds_stack_size(global.pile);
 		ds_list_add(global.last_played_hand, next_card); // add to global last hand tracker
 		global.which_last_hand = "honest";

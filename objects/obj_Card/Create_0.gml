@@ -15,3 +15,9 @@ flipping = false;
 
 image_angle = rotation;
 
+// Used for move functionality
+new_x = -1;
+new_y = -1;
+move_speed = 0;
+move_wait = 0;
+new_angle = 0;

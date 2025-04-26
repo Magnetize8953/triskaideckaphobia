@@ -19,3 +19,7 @@ if (keyboard_check(ord("2"))) {
 	two_play_buttons();
 }
 
+// TODO: TEST FOR FLIPPING POT, REMOVE
+if (keyboard_check(ord("F"))) {
+	flip_pot();
+}

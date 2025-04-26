@@ -2,6 +2,7 @@ draw_text(room_width / 2 - 40, 90, "Current Player: " + string(global.current_tu
 
 draw_text(room_width / 2 - 160, 130, global.last_hand_message);
 
+// TODO: Make sure this doesn't update while someone is building their play
 if (global.which_last_hand != "") {
 	draw_text(room_width / 2 - 70, 110, "Last played hand type: " + global.which_last_hand);
 }

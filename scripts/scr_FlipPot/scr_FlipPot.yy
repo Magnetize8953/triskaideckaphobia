@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_FlipPot",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_FlipPot",
+  "parent":{
+    "name":"PotHandling",
+    "path":"folders/Scripts/PotHandling.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
