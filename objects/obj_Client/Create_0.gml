@@ -10,4 +10,3 @@ connection = network_connect(client_socket, ip, port);
 buffer = buffer_create(16384, buffer_grow, 1);
 // associates player ids with nums
 elements = ds_map_create();
-id_on_server = -1;

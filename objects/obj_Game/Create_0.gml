@@ -60,7 +60,8 @@ global.pile = ds_list_create();
 global.supposed_top = noone;
 
 // Tracks if a base card has been selected
-global.base_card = false;
+global.base_card_exists = false;
+global.base_picker = 1;
 
 // A global tracker for a stack to be played 
 global.staging_cards = ds_stack_create();
@@ -73,9 +74,3 @@ global.building_bluffed_hand = false;
 global.last_played_hand = ds_list_create();
 global.which_last_hand = ""; //string that will hold "honest" or "bluff"
 global.last_hand_message = ""; //string with message that will be manually reset each hand
-
-/* MAY NOT BE NEEDED
-// Tracker for what's entered the stack 
-// TODO: implement use of 
-global.the_stack = ds_stack_create();
-*/

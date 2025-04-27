@@ -5,9 +5,7 @@ enum NETWORK {
     PLAYER_REMOVE,          // (u8) player id
     MAX_PLAYERS_REACHED,    //
     END_GAME,               //
-}
-
-enum GAME {
+    
     BASE_SELECT,            // (u8) player id, (u8) base card id
     HONEST_HAND,            // (u8) player id, (u8, loop) cards
     BLUFFED_HAND,           // (u8) player id, (u8, loop) cards
@@ -15,5 +13,8 @@ enum GAME {
     NEXT_ROUND,             // 
     GAME_OVER,              // (u8) winning player id
 }
+
+// default, to be used by host
+global.id_on_server = 1;
 
 show_debug_message("networking initialised");

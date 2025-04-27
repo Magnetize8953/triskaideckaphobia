@@ -76,6 +76,7 @@ if (event_id == server) {
         ds_map_delete(clients, socket);
         
     }
+    
 } else if (event_id != server) { // non-connection packets
     
     var socket = async_load[? "id"];
@@ -85,5 +86,37 @@ if (event_id == server) {
     buffer_seek(connection_buffer, buffer_seek_start, 1);
     var identifier = buffer_read(connection_buffer, buffer_u8);
     show_debug_message("server received: " + string(identifier));
+    
+    if (identifier == NETWORK.BASE_SELECT) {
+        
+        base_selecting();
+        var other_player = buffer_read(connection_buffer, buffer_u8);
+        var base_card_id = buffer_read(connection_buffer, buffer_u8);
+        
+        var base_card_obj;
+        for (var i = 0; i < ds_list_size(global.pot_cards); i++) {
+            if (ds_list_find_value(global.pot_cards, i).card_id == base_card_id) {
+                base_card_obj = ds_list_find_value(global.pot_cards, i);
+                break;
+            }
+        }
+        show_debug_message(string(base_card_obj.card_id));
+        with (base_card_obj) {
+            networked_base_pick = true;
+            event_perform(ev_mouse, ev_left_press);
+        }
+        
+        // re-emit base select to other player
+        for (var i = 0; i < ds_list_size(sockets); i++) {
+            if (ds_list_find_value(sockets, i) != socket) {
+                buffer_seek(buffer, buffer_seek_start, 1);
+                buffer_write(buffer, buffer_u8, NETWORK.BASE_SELECT);
+                buffer_write(buffer, buffer_u8, other_player);
+                buffer_write(buffer, buffer_u8, base_card_id);
+                network_send_packet(ds_list_find_value(sockets, i), buffer, buffer_tell(buffer));
+            }
+        }
+        
+    }
     
 }

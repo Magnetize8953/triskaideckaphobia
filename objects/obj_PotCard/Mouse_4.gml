@@ -6,16 +6,20 @@ show_debug_message("card id itself: " + string(self.card_id));
 // card_was_selected next time a card is going to be selected
 
 // If there is no base card, and a base card is being selected
-if (!global.base_card and global.card_being_selected) {
+if (!global.base_card_exists and global.card_being_selected and (global.id_on_server == global.base_picker or networked_base_pick)) {
+    center_stack_reset();
+    
 	// No more card being selected
 	global.card_being_selcted = false;
-	global.base_card = true;
+	global.base_card_exists = true;
 	
 	// Card is the base of the pot
 	self.is_base = true;
 	
 	// Remove card from the global pot
-	ds_list_delete(global.pot, ds_list_find_index(global.pot, self.card_id));
+    var index_to_delete = ds_list_find_index(global.pot, self.card_id);
+	ds_list_delete(global.pot, index_to_delete);
+    ds_list_delete(global.pot_cards, index_to_delete);
 	
 	// Move to center of the room, and as deep as physically possible
 	self.x = room_width / 2;
@@ -27,5 +31,35 @@ if (!global.base_card and global.card_being_selected) {
     ds_list_add(global.pile, self);
 	
 	global.supposed_top = self.card_id;
-
+    
+    if (!networked_base_pick) {
+        var card_id = self.card_id;
+        if (instance_exists(obj_Server)) {
+            with (obj_Server) {
+                for (var i = 0; i < ds_list_size(sockets); i++) {
+                    buffer_seek(buffer, buffer_seek_start, 1);
+                    buffer_write(buffer, buffer_u8, NETWORK.BASE_SELECT);
+                    buffer_write(buffer, buffer_u8, 1);
+                    buffer_write(buffer, buffer_u8, card_id);
+                    network_send_packet(ds_list_find_value(sockets, i), buffer, buffer_tell(buffer));
+                }
+            }
+        }
+        else if (instance_exists(obj_Client)) {
+            with (obj_Client) {
+                buffer_seek(buffer, buffer_seek_start, 1);
+                buffer_write(buffer, buffer_u8, NETWORK.BASE_SELECT);
+                buffer_write(buffer, buffer_u8, global.id_on_server);
+                buffer_write(buffer, buffer_u8, card_id);
+                network_send_packet(client_socket, buffer, buffer_tell(buffer));
+            }
+        }
+    }
+    
+    if (global.base_picker == 3) {
+        global.base_picker = 1;
+    } else {
+        global.base_picker++;
+    }
+    networked_base_pick = false;
 }
