@@ -1,11 +1,11 @@
-if ((global.building_honest_hand and 
-    global.current_turn == self.associated_player.num and 
+if ((face_down) or
+    (self.x == room_width / 2 and self.y == room_height / 2) or
+    (global.building_bluffed_hand) or
+    ((global.building_honest_hand) and
+    (global.current_turn == global.id_on_server) and // self.associated_player.num) and
     !(self.x == room_width / 2 and self.y == room_height / 2) and
     ((ds_stack_size(global.staging_cards) == 0 and validate_stack(self.card_id, global.supposed_top)) or 
-    (ds_stack_size(global.staging_cards) != 0 and validate_stack(self.card_id, ds_stack_top(global.staging_cards).card_id)))) or 
-    (global.building_bluffed_hand) or 
-    (self.x == room_width / 2 and self.y == room_height / 2) or
-    (face_down)) {
+    (ds_stack_size(global.staging_cards) != 0 and validate_stack(self.card_id, ds_stack_top(global.staging_cards).card_id))))) {
         draw_self();
 } else {
     shader_set(shdr_GreyScale);

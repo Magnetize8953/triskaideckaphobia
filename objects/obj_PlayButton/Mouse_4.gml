@@ -23,11 +23,12 @@ if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.bu
     }
     
     // moved staged stack to pile
+    var next_card;
     for (var i = 0; i < staging_size; i++) {
-        var next_card = ds_stack_pop(staging_reversed);
+        next_card = ds_stack_pop(staging_reversed);
         next_card.new_x = room_width / 2;
         next_card.new_y = room_height / 2;
-		next_card.move_speed = 19 + 1/(i-staging_size);
+		next_card.move_speed = 19 + 1 / (i - staging_size);
 		next_card.move_wait = i;
 		next_card.alarm[3] = 1;
 		
@@ -44,12 +45,36 @@ if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.bu
     }
 	
 	// Make supposed_top the actual new top
-	global.supposed_top = ds_list_find_value(global.pile, ds_list_size(global.pile) - 1).card_id;
+	global.supposed_top = next_card.card_id;
 	
 	update_last_hand_string("");
 	
+    if (instance_exists(obj_Server)) {
+        var in_staging = self.staging_size;
+        with (obj_Server) {
+            for (var i = 0; i < ds_list_size(sockets); i++) {
+                buffer_seek(buffer, buffer_seek_start, 1);
+                buffer_write(buffer, buffer_u8, NETWORK.HONEST_HAND);
+                buffer_write(buffer, buffer_u8, 1);
+                for (var j = ds_list_size(global.pile) - in_staging; j < ds_list_size(global.pile); j++) {
+                    buffer_write(buffer, buffer_u8, ds_list_find_value(global.pile, j).card_id);
+                }
+                buffer_write(buffer, buffer_u8, 255);
+                network_send_packet(ds_list_find_value(sockets, i), buffer, buffer_tell(buffer));
+            }
+        }
+    }
+    /*
+    else if (instance_exists(obj_Client)) {
+        with (obj_Client) {
+            
+        }
+    }
+    */
+    next_turn();
 	
 }
+
 else if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.building_bluffed_hand){
 	// Disable it happening a second time, to start
 	global.hand_is_go = true;

@@ -52,7 +52,12 @@ global.player2 = instance_create_layer(0, 0, "Instances", obj_Player, { num: 2, 
 global.player3 = instance_create_layer(0, 0, "Instances", obj_Player, { num: 3, hand: player_3_hand });
 
 show_debug_message("Creating pot tracker...");
-global.pot_obj = instance_create_layer(0, 0, "Instances", obj_Pot, { hand: global.pot});
+global.pot_obj = instance_create_layer(0, 0, "Instances", obj_Pot, { hand: global.pot });
+
+global.hand_obj_pool = ds_list_create();
+ds_list_concat(global.hand_obj_pool, global.player1.my_cards);
+ds_list_concat(global.hand_obj_pool, global.player2.my_cards);
+ds_list_concat(global.hand_obj_pool, global.player3.my_cards);
 
 
 // center pile of cards and the top of it (or what it's supposed to be)

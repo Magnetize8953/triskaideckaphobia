@@ -119,4 +119,10 @@ if (event_id == server) {
         
     }
     
+    else if (identifier == NETWORK.HONEST_HAND) {
+        
+        
+        
+    }
+    
 }

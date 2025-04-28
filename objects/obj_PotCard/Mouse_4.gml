@@ -62,4 +62,5 @@ if (!global.base_card_exists and global.card_being_selected and (global.id_on_se
         global.base_picker++;
     }
     networked_base_pick = false;
+    flip_pot();
 }

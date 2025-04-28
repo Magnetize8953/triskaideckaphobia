@@ -60,6 +60,37 @@ if (event_id == client_socket && event_id != 1) {
         }
         
     }
+    
+    else if (identifier == NETWORK.HONEST_HAND) {
+        
+        var other_player = buffer_read(connection_buffer, buffer_u8);
+        var other_card_id = buffer_read(connection_buffer, buffer_u8);
+        while (other_card_id != 255) {
+            show_debug_message("honest buffer read: " + string(other_card_id));
+            var found_card = false;
+            for (var i = 0; i < ds_list_size(global.hand_pool); i++) {
+                with (ds_list_find_value(global.hand_obj_pool, i)) {
+                    if (card_id == other_card_id) {
+                        ds_stack_push(global.staging_cards, self);
+                        found_card = true;
+                    }
+                }
+                if (found_card) {
+                    show_debug_message("found a card");
+                    break;
+                }
+            }
+            other_card_id = buffer_read(connection_buffer, buffer_u8);
+        }
+        show_debug_message("honest buffer read: " + string(other_card_id))
+        
+        global.hand_is_go = false;
+        global.building_honest_hand = true;
+        with (instance_create_layer(-100, -100, "Instances", obj_PlayButton, { type: 1 })) {
+            event_perform(ev_mouse, ev_left_press);
+        }
+        
+    }
     #endregion
     
 }
