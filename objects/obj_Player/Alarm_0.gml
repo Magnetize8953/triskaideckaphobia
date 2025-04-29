@@ -4,7 +4,7 @@ while (instance_place(room_width / 2, room_height / 2, obj_Card) != noone) {
 }
 
 // Reset the log of card objects associated with this player
-for (i = 0; i < ds_list_size(self.my_cards); i++) {
+for (i = ds_list_size(self.my_cards) - 1; i > -1; i--) {
 	instance_destroy(ds_list_find_value(self.my_cards, i));
 }
 ds_list_clear(self.my_cards);

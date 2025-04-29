@@ -22,19 +22,50 @@ if (event_id == client_socket && event_id != 1) {
         show_debug_message("id on server: " + string(global.id_on_server));
         
         ds_list_clear(global.player1.hand);
-        var hand_size = buffer_read(connection_buffer, buffer_u8)
-        for (var i = 0; i < hand_size; i++) {
+        var size = buffer_read(connection_buffer, buffer_u8)
+        for (var i = 0; i < size; i++) {
             ds_list_add(global.player1.hand, buffer_read(connection_buffer, buffer_u8));
         }
         global.player1.update_hand = true;
         
+        ds_list_clear(global.player2.hand);
+        size = buffer_read(connection_buffer, buffer_u8)
+        for (var i = 0; i < size; i++) {
+            ds_list_add(global.player2.hand, buffer_read(connection_buffer, buffer_u8));
+        }
+        global.player2.update_hand = true;
+        
+        ds_list_clear(global.player3.hand);
+        size = buffer_read(connection_buffer, buffer_u8)
+        for (var i = 0; i < size; i++) {
+            ds_list_add(global.player3.hand, buffer_read(connection_buffer, buffer_u8));
+        }
+        global.player3.update_hand = true;
+        
         ds_list_clear(global.pot);
-        var pot_size = buffer_read(connection_buffer, buffer_u8)
-        for (var i = 0; i < pot_size; i++) {
-            ds_list_add(global.pot, buffer_read(connection_buffer, buffer_u8));
+        size = ds_list_size(global.pot_cards);
+        for (var i = 0; i < size; i++) {
+            instance_destroy(obj_PotCard);
+        }
+        size = buffer_read(connection_buffer, buffer_u8)
+        for (var i = 0; i < size; i++) {
+            var temp = buffer_read(connection_buffer, buffer_u8)
+            ds_list_add(global.pot, temp);
         }
         global.pot_obj.hand = global.pot;
         global.pot_obj.alarm[0] = 5;
+        
+        show_debug_message("resetting hand pool...")
+        ds_list_clear(global.hand_pool);
+        ds_list_concat(global.hand_pool, global.player1.hand);
+        ds_list_concat(global.hand_pool, global.player2.hand);
+        ds_list_concat(global.hand_pool, global.player3.hand);
+        
+        show_debug_message("resetting hand object pool...")
+        ds_list_clear(global.hand_obj_pool);
+        ds_list_concat(global.hand_obj_pool, global.player1.my_cards);
+        ds_list_concat(global.hand_obj_pool, global.player2.my_cards);
+        ds_list_concat(global.hand_obj_pool, global.player3.my_cards);
         
     }
     #endregion
@@ -47,10 +78,9 @@ if (event_id == client_socket && event_id != 1) {
         var base_card_id = buffer_read(connection_buffer, buffer_u8);
         
         var base_card_obj;
-        for (var i = 0; i < ds_list_size(global.pot_cards); i++) {
-            if (ds_list_find_value(global.pot_cards, i).card_id == base_card_id) {
-                base_card_obj = ds_list_find_value(global.pot_cards, i);
-                break;
+        with (obj_PotCard) {
+            if (card_id == base_card_id) {
+                base_card_obj = self;
             }
         }
         show_debug_message(string(base_card_obj.card_id));
@@ -67,17 +97,9 @@ if (event_id == client_socket && event_id != 1) {
         var other_card_id = buffer_read(connection_buffer, buffer_u8);
         while (other_card_id != 255) {
             show_debug_message("honest buffer read: " + string(other_card_id));
-            var found_card = false;
-            for (var i = 0; i < ds_list_size(global.hand_pool); i++) {
-                with (ds_list_find_value(global.hand_obj_pool, i)) {
-                    if (card_id == other_card_id) {
-                        ds_stack_push(global.staging_cards, self);
-                        found_card = true;
-                    }
-                }
-                if (found_card) {
-                    show_debug_message("found a card");
-                    break;
+            with (obj_Card) {
+                if (card_id == other_card_id) {
+                    ds_stack_push(global.staging_cards, self);
                 }
             }
             other_card_id = buffer_read(connection_buffer, buffer_u8);

@@ -28,7 +28,7 @@ if (event_id == server) {
             other_hand = obj_Game.player_2_hand;
         }
         
-        // give player their server-side num, hand, pot
+        // give player their server-side num, hand
         buffer_seek(buffer, buffer_seek_start, 1);
         buffer_write(buffer, buffer_u8, NETWORK.JOINING);
         buffer_write(buffer, buffer_u8, num_players);
@@ -36,28 +36,27 @@ if (event_id == server) {
         for (var i = 0; i < ds_list_size(player_hand); i++) {
             buffer_write(buffer, buffer_u8, ds_list_find_value(player_hand, i));
         }
+        
+        // host hand
+        // buffer_write(buffer, buffer_u8, 1);
+        buffer_write(buffer, buffer_u8, ds_list_size(obj_Game.player_1_hand));
+        for (var i = 0; i < ds_list_size(obj_Game.player_1_hand); i++) {
+            buffer_write(buffer, buffer_u8, ds_list_find_value(obj_Game.player_1_hand, i));
+        }
+        
+        // other player hand
+        // buffer_write(buffer, buffer_u8, num_players == 2 ? 3 : 2);
+        buffer_write(buffer, buffer_u8, ds_list_size(other_hand));
+        for (var i = 0; i < ds_list_size(other_hand); i++) {
+            buffer_write(buffer, buffer_u8, ds_list_find_value(other_hand, i));
+        }
+        
+        // pot
         buffer_write(buffer, buffer_u8, ds_list_size(global.pot));
         for (var i = 0; i < ds_list_size(global.pot); i++) {
             buffer_write(buffer, buffer_u8, ds_list_find_value(global.pot, i));
         }
-        network_send_packet(socket, buffer, buffer_tell(buffer));
         
-        // give new player server host information
-        buffer_seek(buffer, buffer_seek_start, 1);
-        buffer_write(buffer, buffer_u8, NETWORK.PLAYER_ADD);
-        buffer_write(buffer, buffer_u8, 1);
-        for (var i = 0; i < ds_list_size(obj_Game.player_1_hand); i++) {
-            buffer_write(buffer, buffer_u8, ds_list_find_value(obj_Game.player_1_hand, i));
-        }
-        network_send_packet(socket, buffer, buffer_tell(buffer));
-        
-        // give new player other player's information
-        buffer_seek(buffer, buffer_seek_start, 1);
-        buffer_write(buffer, buffer_u8, NETWORK.PLAYER_ADD);
-        buffer_write(buffer, buffer_u8, num_players == 2 ? 3 : 2);
-        for (var i = 0; i < ds_list_size(other_hand); i++) {
-            buffer_write(buffer, buffer_u8, ds_list_find_value(other_hand, i));
-        }
         network_send_packet(socket, buffer, buffer_tell(buffer));
         
     } else if (type == network_type_disconnect) {
