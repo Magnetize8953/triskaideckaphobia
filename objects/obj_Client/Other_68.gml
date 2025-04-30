@@ -67,6 +67,9 @@ if (event_id == client_socket && event_id != 1) {
         ds_list_concat(global.hand_obj_pool, global.player2.my_cards);
         ds_list_concat(global.hand_obj_pool, global.player3.my_cards);
         
+        // give a bit of time to allow resetting hands
+        alarm[0] = 30;
+        
     }
     #endregion
     
@@ -96,7 +99,7 @@ if (event_id == client_socket && event_id != 1) {
         var other_player = buffer_read(connection_buffer, buffer_u8);
         var other_card_id = buffer_read(connection_buffer, buffer_u8);
         while (other_card_id != 255) {
-            show_debug_message("honest buffer read: " + string(other_card_id));
+            show_debug_message("client honest buffer read: " + string(other_card_id));
             with (obj_Card) {
                 if (card_id == other_card_id) {
                     ds_stack_push(global.staging_cards, self);
@@ -104,11 +107,12 @@ if (event_id == client_socket && event_id != 1) {
             }
             other_card_id = buffer_read(connection_buffer, buffer_u8);
         }
-        show_debug_message("honest buffer read: " + string(other_card_id))
+        show_debug_message("client honest buffer read: " + string(other_card_id));
         
         global.hand_is_go = false;
         global.building_honest_hand = true;
         with (instance_create_layer(-100, -100, "Instances", obj_PlayButton, { type: 1 })) {
+            networked_action = true;
             event_perform(ev_mouse, ev_left_press);
         }
         

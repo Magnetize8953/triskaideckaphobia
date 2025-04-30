@@ -1,7 +1,7 @@
 // TODO: uncomment out and finish 
 // play_hand script call here
 // If there are cards set to be played
-if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.building_honest_hand) {
+if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or networked_action) and global.building_honest_hand) {
 	// Disable it happening a second time, to start
 	global.hand_is_go = true;
 	
@@ -20,6 +20,12 @@ if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.bu
     staging_size = ds_stack_size(global.staging_cards);
     for (var i = 0; i < staging_size; i++) {
         ds_stack_push(staging_reversed, ds_stack_pop(global.staging_cards));
+    }
+    
+    var another_staging_reversed;
+    if (instance_exists(obj_Client)) {
+        another_staging_reversed = ds_stack_create();
+        ds_stack_copy(another_staging_reversed, staging_reversed);
     }
     
     // moved staged stack to pile
@@ -49,28 +55,37 @@ if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.bu
 	
 	update_last_hand_string("");
 	
-    if (instance_exists(obj_Server)) {
+    if (!networked_action) {
         var in_staging = self.staging_size;
-        with (obj_Server) {
-            for (var i = 0; i < ds_list_size(sockets); i++) {
+        if (instance_exists(obj_Server)) {
+            with (obj_Server) {
+                for (var i = 0; i < ds_list_size(sockets); i++) {
+                    buffer_seek(buffer, buffer_seek_start, 1);
+                    buffer_write(buffer, buffer_u8, NETWORK.HONEST_HAND);
+                    buffer_write(buffer, buffer_u8, 1);
+                    for (var j = ds_list_size(global.pile) - in_staging; j < ds_list_size(global.pile); j++) {
+                        buffer_write(buffer, buffer_u8, ds_list_find_value(global.pile, j).card_id);
+                    }
+                    buffer_write(buffer, buffer_u8, 255);
+                    network_send_packet(ds_list_find_value(sockets, i), buffer, buffer_tell(buffer));
+                }
+            }
+        }
+        else if (instance_exists(obj_Client)) {
+            with (obj_Client) {
                 buffer_seek(buffer, buffer_seek_start, 1);
                 buffer_write(buffer, buffer_u8, NETWORK.HONEST_HAND);
-                buffer_write(buffer, buffer_u8, 1);
+                buffer_write(buffer, buffer_u8, global.id_on_server);
                 for (var j = ds_list_size(global.pile) - in_staging; j < ds_list_size(global.pile); j++) {
                     buffer_write(buffer, buffer_u8, ds_list_find_value(global.pile, j).card_id);
                 }
                 buffer_write(buffer, buffer_u8, 255);
-                network_send_packet(ds_list_find_value(sockets, i), buffer, buffer_tell(buffer));
+                network_send_packet(client_socket, buffer, buffer_tell(buffer));
             }
         }
     }
-    /*
-    else if (instance_exists(obj_Client)) {
-        with (obj_Client) {
-            
-        }
-    }
-    */
+    networked_action = false;
+    
     next_turn();
 	
 }
