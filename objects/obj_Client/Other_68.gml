@@ -68,7 +68,7 @@ if (event_id == client_socket && event_id != 1) {
         ds_list_concat(global.hand_obj_pool, global.player3.my_cards);
         
         // give a bit of time to allow resetting hands
-        alarm[0] = 30;
+        alarm[1] = 15;
         
     }
     #endregion

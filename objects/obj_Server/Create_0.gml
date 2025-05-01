@@ -11,3 +11,5 @@ buffer = buffer_create(16384, buffer_grow, 1);
 
 // track number of players in game
 num_players = 1;
+
+alarm[0] = 5;

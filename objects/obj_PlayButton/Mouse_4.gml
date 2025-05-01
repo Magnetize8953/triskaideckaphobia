@@ -26,13 +26,20 @@ if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or global.ne
     var next_card;
     for (var i = 0; i < staging_size; i++) {
         next_card = ds_stack_pop(staging_reversed);
+        if (global.networked_action) {
+            next_card.scale = global.stack_scale;
+            next_card.alarm[0] = 1;
+        }
+        
         next_card.new_x = room_width / 2;
         next_card.new_y = room_height / 2;
 		next_card.move_speed = 19 + 1 / (i - staging_size);
 		next_card.move_wait = i;
-		next_card.alarm[3] = 1;
+		next_card.alarm[3] = 30;
 		
-        next_card.image_xscale = global.stack_scale;
+        if (!global.networked_action) {
+            next_card.image_xscale = global.stack_scale;
+        }
         next_card.image_yscale = global.stack_scale;
 		
         randomize();
@@ -105,22 +112,49 @@ else if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or glob
         ds_stack_push(staging_reversed, ds_stack_pop(global.staging_cards));
     }
     
-	
-	for (var i = 0; i < staging_size; i++) {
-		// If the card isn't flipping yet, start it flipping
-		if (!ds_list_find_value(added_cards, i).flipping) {
-			ds_list_find_value(added_cards, i).flipping = true;
-			ds_list_find_value(added_cards, i).alarm[0] = 5;
-		}
-	}
     
     if (!global.networked_action) {
+        // other players' cards are already face down, so only need to flip if my bluff
+        for (var i = 0; i < staging_size; i++) {
+            // If the card isn't flipping yet, start it flipping
+            if (!ds_list_find_value(added_cards, i).flipping) {
+                ds_list_find_value(added_cards, i).flipping = true;
+                ds_list_find_value(added_cards, i).alarm[0] = 5;
+            }
+        }
         // Go to alarm to wait for cards to flip
         alarm[0] = 5;
     } else {
-        // Go to alarm to wait for cards to flip
-        alarm[1] = 5;
-        alarm_1_running = true;
+        // TODO: clean up, move to script probably
+        // stolen from obj_BluffNumberPrompter
+        
+        show_debug_message("new supposed top: " + string(global.supposed_top));
+        show_debug_message("supposed rank: " + string(get_rank(global.supposed_top)));
+        // NOW move the cards over
+        // moved staged stack to pile
+        for (var i = 0; i < staging_size; i++) {
+            var next_card = ds_stack_pop(staging_reversed);
+            next_card.new_x = room_width / 2;
+            next_card.new_y = room_height / 2;
+            next_card.move_speed = 19 + 1 / (i - staging_size);
+            next_card.move_wait = i;
+            next_card.alarm[3] = 1;
+            
+            next_card.image_xscale = global.stack_scale;
+            next_card.image_yscale = global.stack_scale;
+            
+            randomize();
+            next_card.new_angle = random_range(0, 180);
+            next_card.depth = -1 + -ds_list_size(global.pile);
+            
+            ds_list_add(global.last_played_hand, next_card); // add to global last hand tracker
+            global.which_last_hand = "bluff";
+            
+            ds_list_add(global.pile, next_card);
+        }
+        
+        // update the displayed last played hand (needs bluff functionality added)
+        update_last_hand_string(hand_message);
     }
     global.networked_action = false;
     
@@ -129,5 +163,5 @@ else if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or glob
 } 
 
 if (global.hand_is_go and type == 1) {
-	alarm[2] = 5;
+	instance_destroy(self);
 }
