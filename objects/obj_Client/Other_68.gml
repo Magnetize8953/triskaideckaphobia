@@ -88,7 +88,7 @@ if (event_id == client_socket && event_id != 1) {
         }
         show_debug_message(string(base_card_obj.card_id));
         with (base_card_obj) {
-            networked_base_pick = true;
+            global.networked_action = true;
             event_perform(ev_mouse, ev_left_press);
         }
         
@@ -112,7 +112,37 @@ if (event_id == client_socket && event_id != 1) {
         global.hand_is_go = false;
         global.building_honest_hand = true;
         with (instance_create_layer(-100, -100, "Instances", obj_PlayButton, { type: 1 })) {
-            networked_action = true;
+            global.networked_action = true;
+            event_perform(ev_mouse, ev_left_press);
+        }
+        
+    }
+    
+    else if (identifier == NETWORK.BLUFFED_HAND) {
+        
+        var other_player = buffer_read(connection_buffer, buffer_u8);
+        var other_card_id = buffer_read(connection_buffer, buffer_u8);
+        var tmp_added_cards = ds_list_create();
+        while (other_card_id != 255) {
+            show_debug_message("client honest buffer read: " + string(other_card_id));
+            with (obj_Card) {
+                if (card_id == other_card_id) {
+                    ds_stack_push(global.staging_cards, self);
+                    ds_list_add(tmp_added_cards, self);
+                }
+            }
+            other_card_id = buffer_read(connection_buffer, buffer_u8);
+        }
+        show_debug_message("client honest buffer read: " + string(other_card_id));
+        
+        global.supposed_top = buffer_read(connection_buffer, buffer_s8);
+        
+        global.hand_is_go = false;
+        global.building_bluffed_hand = true;
+        with (instance_create_layer(-100, -100, "Instances", obj_PlayButton, { type: 1 })) {
+            global.networked_action = true;
+            ds_list_copy(added_cards, tmp_added_cards);
+            hand_message = buffer_read(connection_buffer, buffer_string);
             event_perform(ev_mouse, ev_left_press);
         }
         

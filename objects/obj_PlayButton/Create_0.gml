@@ -5,4 +5,6 @@ if (global.building_bluffed_hand) {
 staging_size = -1;
 staging_reversed = ds_stack_create();
 
-networked_action = false;
+global.networked_action = false;
+
+alarm_1_running = false;

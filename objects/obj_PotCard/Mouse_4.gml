@@ -6,7 +6,7 @@ show_debug_message("card id itself: " + string(self.card_id));
 // card_was_selected next time a card is going to be selected
 
 // If there is no base card, and a base card is being selected
-if (!global.base_card_exists and global.card_being_selected and (global.id_on_server == global.base_picker or networked_base_pick)) {
+if (!global.base_card_exists and global.card_being_selected and (global.id_on_server == global.base_picker or global.networked_action)) {
     center_stack_reset();
     
 	// No more card being selected
@@ -32,7 +32,7 @@ if (!global.base_card_exists and global.card_being_selected and (global.id_on_se
 	
 	global.supposed_top = self.card_id;
     
-    if (!networked_base_pick) {
+    if (!global.networked_action) {
         var card_id = self.card_id;
         if (instance_exists(obj_Server)) {
             with (obj_Server) {
@@ -61,6 +61,6 @@ if (!global.base_card_exists and global.card_being_selected and (global.id_on_se
     } else {
         global.base_picker++;
     }
-    networked_base_pick = false;
+    global.networked_action = false;
     flip_pot();
 }

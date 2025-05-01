@@ -79,3 +79,6 @@ global.building_bluffed_hand = false;
 global.last_played_hand = ds_list_create();
 global.which_last_hand = ""; //string that will hold "honest" or "bluff"
 global.last_hand_message = ""; //string with message that will be manually reset each hand
+
+// networking
+global.networked_action = false;

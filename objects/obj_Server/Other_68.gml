@@ -100,7 +100,7 @@ if (event_id == server) {
         }
         show_debug_message(string(base_card_obj.card_id));
         with (base_card_obj) {
-            networked_base_pick = true;
+            global.networked_action = true;
             event_perform(ev_mouse, ev_left_press);
         }
         
@@ -148,7 +148,7 @@ if (event_id == server) {
         global.hand_is_go = false;
         global.building_honest_hand = true;
         with (instance_create_layer(-100, -100, "Instances", obj_PlayButton, { type: 1 })) {
-            networked_action = true;
+            global.networked_action = true;
             event_perform(ev_mouse, ev_left_press);
         }
         
@@ -162,6 +162,65 @@ if (event_id == server) {
                     buffer_write(buffer, buffer_u8, ds_list_find_value(staging_list, j));
                 }
                 buffer_write(buffer, buffer_u8, 255);
+                network_send_packet(ds_list_find_value(sockets, i), buffer, buffer_tell(buffer));
+            }
+        }
+        
+    }
+    
+    else if (identifier == NETWORK.BLUFFED_HAND) {
+        
+        var other_player = buffer_read(connection_buffer, buffer_u8);
+        var other_card_id = buffer_read(connection_buffer, buffer_u8);
+        var tmp_added_cards = ds_list_create();
+        while (other_card_id != 255) {
+            show_debug_message("client honest buffer read: " + string(other_card_id));
+            with (obj_Card) {
+                if (card_id == other_card_id) {
+                    ds_stack_push(global.staging_cards, self);
+                    ds_list_add(tmp_added_cards, self);
+                }
+            }
+            other_card_id = buffer_read(connection_buffer, buffer_u8);
+        }
+        show_debug_message("client honest buffer read: " + string(other_card_id));
+        
+        global.supposed_top = buffer_read(connection_buffer, buffer_s8);
+        var hand_msg = buffer_read(connection_buffer, buffer_string);
+        
+        // copy staging to be re-emitted
+        var copy_staging = ds_stack_create();
+        var staging_size = ds_stack_size(global.staging_cards);
+        ds_stack_copy(copy_staging, global.staging_cards);
+        
+        // turn stack into list to be able to loop
+        var staging_list = ds_list_create();
+        for (var i = 0; i < staging_size; i++) {
+            ds_list_add(staging_list, ds_stack_pop(copy_staging).card_id);
+        }
+        ds_stack_destroy(copy_staging);
+        
+        global.hand_is_go = false;
+        global.building_bluffed_hand = true;
+        with (instance_create_layer(-100, -100, "Instances", obj_PlayButton, { type: 1 })) {
+            global.networked_action = true;
+            ds_list_copy(added_cards, tmp_added_cards);
+            hand_message = hand_msg;
+            event_perform(ev_mouse, ev_left_press);
+        }
+        
+        // re-emit hand to other player
+        for (var i = 0; i < ds_list_size(sockets); i++) {
+            if (ds_list_find_value(sockets, i) != socket) {
+                buffer_seek(buffer, buffer_seek_start, 1);
+                buffer_write(buffer, buffer_u8, NETWORK.BLUFFED_HAND);
+                buffer_write(buffer, buffer_u8, other_player);
+                for (var j = staging_size - 1; j >= 0; j--) {
+                    buffer_write(buffer, buffer_u8, ds_list_find_value(staging_list, j));
+                }
+                buffer_write(buffer, buffer_u8, 255);
+                buffer_write(buffer, buffer_s8, global.supposed_top);
+                buffer_write(buffer, buffer_string, hand_msg);
                 network_send_packet(ds_list_find_value(sockets, i), buffer, buffer_tell(buffer));
             }
         }

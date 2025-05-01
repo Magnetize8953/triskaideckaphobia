@@ -1,3 +1,3 @@
 event_inherited();
 
-networked_base_pick = false;
+global.networked_action = false;

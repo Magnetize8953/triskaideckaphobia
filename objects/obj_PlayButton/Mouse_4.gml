@@ -1,7 +1,7 @@
 // TODO: uncomment out and finish 
 // play_hand script call here
 // If there are cards set to be played
-if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or networked_action) and global.building_honest_hand) {
+if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or global.networked_action) and global.building_honest_hand) {
 	// Disable it happening a second time, to start
 	global.hand_is_go = true;
 	
@@ -20,12 +20,6 @@ if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or networked
     staging_size = ds_stack_size(global.staging_cards);
     for (var i = 0; i < staging_size; i++) {
         ds_stack_push(staging_reversed, ds_stack_pop(global.staging_cards));
-    }
-    
-    var another_staging_reversed;
-    if (instance_exists(obj_Client)) {
-        another_staging_reversed = ds_stack_create();
-        ds_stack_copy(another_staging_reversed, staging_reversed);
     }
     
     // moved staged stack to pile
@@ -55,7 +49,7 @@ if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or networked
 	
 	update_last_hand_string("");
 	
-    if (!networked_action) {
+    if (!global.networked_action) {
         var in_staging = self.staging_size;
         if (instance_exists(obj_Server)) {
             with (obj_Server) {
@@ -84,13 +78,13 @@ if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or networked
             }
         }
     }
-    networked_action = false;
+    global.networked_action = false;
     
     next_turn();
 	
 }
 
-else if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.building_bluffed_hand){
+else if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or global.networked_action) and global.building_bluffed_hand){
 	// Disable it happening a second time, to start
 	global.hand_is_go = true;
 	
@@ -119,11 +113,21 @@ else if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and glob
 			ds_list_find_value(added_cards, i).alarm[0] = 5;
 		}
 	}
-	// Go to alarm to wait for cards to flip
-	alarm[0] = 5;
+    
+    if (!global.networked_action) {
+        // Go to alarm to wait for cards to flip
+        alarm[0] = 5;
+    } else {
+        // Go to alarm to wait for cards to flip
+        alarm[1] = 5;
+        alarm_1_running = true;
+    }
+    global.networked_action = false;
+    
+    next_turn();
 	
 } 
 
 if (global.hand_is_go and type == 1) {
-	instance_destroy();
+	alarm[2] = 5;
 }

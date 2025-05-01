@@ -41,7 +41,7 @@ if (new_available > 0) {
 	global.supposed_top = -num; // make it ≤0 so that it always is considered lower suit
 		// NOTE: gamemaker, for some reason, evaluates negative mod incorrectly
 		// ie, -4%13 is considered 4, not 9 like it mathematically should be. 
-	show_debug_message("new suposed top: " + string(global.supposed_top));
+	show_debug_message("new supposed top: " + string(global.supposed_top));
 	show_debug_message("supposed rank: " + string(get_rank(global.supposed_top)));
 	// NOW move the cards over
 	// moved staged stack to pile
@@ -68,4 +68,37 @@ if (new_available > 0) {
 	
 	// update the displayed last played hand (needs bluff functionality added)
 	update_last_hand_string(hand_mess);
+    
+    var in_staging = stag_size;
+    var hand_msg = hand_mess;
+    if (instance_exists(obj_Server)) {
+        with (obj_Server) {
+            for (var i = 0; i < ds_list_size(sockets); i++) {
+                buffer_seek(buffer, buffer_seek_start, 1);
+                buffer_write(buffer, buffer_u8, NETWORK.BLUFFED_HAND);
+                buffer_write(buffer, buffer_u8, 1);
+                for (var j = ds_list_size(global.pile) - in_staging; j < ds_list_size(global.pile); j++) {
+                    buffer_write(buffer, buffer_u8, ds_list_find_value(global.pile, j).card_id);
+                }
+                buffer_write(buffer, buffer_u8, 255);
+                buffer_write(buffer, buffer_s8, global.supposed_top);
+                buffer_write(buffer, buffer_string, hand_msg);
+                network_send_packet(ds_list_find_value(sockets, i), buffer, buffer_tell(buffer));
+            }
+        }
+    }
+    else if (instance_exists(obj_Client)) {
+        with (obj_Client) {
+            buffer_seek(buffer, buffer_seek_start, 1);
+            buffer_write(buffer, buffer_u8, NETWORK.BLUFFED_HAND);
+            buffer_write(buffer, buffer_u8, 1);
+            for (var j = ds_list_size(global.pile) - in_staging; j < ds_list_size(global.pile); j++) {
+                buffer_write(buffer, buffer_u8, ds_list_find_value(global.pile, j).card_id);
+            }
+            buffer_write(buffer, buffer_u8, 255);
+            buffer_write(buffer, buffer_s8, global.supposed_top);
+            buffer_write(buffer, buffer_string, hand_msg);
+            network_send_packet(client_socket, buffer, buffer_tell(buffer));
+        }
+    }
 }

@@ -8,7 +8,7 @@ enum NETWORK {
     
     BASE_SELECT,            // (u8) player id, (u8) base card id
     HONEST_HAND,            // (u8) player id, (u8, loop 255-terminated) card ids
-    BLUFFED_HAND,           // (u8) player id, (u8, loop 255-terminated) card ids
+    BLUFFED_HAND,           // (u8) player id, (u8, loop 255-terminated) card ids, (u8) supposed top, (string) hand message
     NEXT_TURN,              // 
     NEXT_ROUND,             // 
     GAME_OVER,              // (u8) winning player id
