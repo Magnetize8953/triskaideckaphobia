@@ -18,19 +18,20 @@
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"option_name","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Play",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"text_colour","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"$FFFFFFFF",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"other_room","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resource":{"name":"rm_GameRoom","path":"rooms/rm_GameRoom/rm_GameRoom.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"rm_GameRoom",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":544.0,"y":256.0,},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":832.0,"y":352.0,},
         {"$GMRInstance":"v1","%Name":"inst_1DEF559B","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1DEF559B","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"option_name","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Tutorial",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"text_colour","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"$FFFFFFFF",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":544.0,"y":352.0,},
+            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"other_room","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resource":{"name":"rm_TutRoom","path":"rooms/rm_TutRoom/rm_TutRoom.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"rm_TutRoom",},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":832.0,"y":448.0,},
         {"$GMRInstance":"v1","%Name":"inst_7250E6B6","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7250E6B6","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"option_name","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Credits",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"text_colour","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"$FFFFFFFF",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":544.0,"y":448.0,},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":832.0,"y":544.0,},
         {"$GMRInstance":"v1","%Name":"inst_2BE3546E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2BE3546E","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"option_name","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Quit",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"text_colour","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"$FFFFFFFF",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":544.0,"y":544.0,},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":832.0,"y":640.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4278190080,"depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],
@@ -50,10 +51,10 @@
   "resourceType":"GMRoom",
   "resourceVersion":"2.0",
   "roomSettings":{
-    "Height":768,
+    "Height":1080,
     "inheritRoomSettings":false,
     "persistent":false,
-    "Width":1366,
+    "Width":1920,
   },
   "sequenceId":null,
   "views":[
