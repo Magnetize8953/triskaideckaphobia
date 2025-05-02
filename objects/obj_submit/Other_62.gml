@@ -19,6 +19,7 @@ if (code == 200) {
         show_debug_message("*** premium unlocked ***");
         room_goto(rm_MainMenu);
     } else {
+		global.not_key = true;
         show_debug_message("invalid code entered");
     }
 }

@@ -13,8 +13,14 @@ if (floor(current_time/500) mod 2 == 0) {
     draw_text(cx, y + 15, "|");
 }
 
-// show feedback if we’re waiting on the server
+/* show feedback if we’re waiting on the server
 if (awaiting_response) {
     draw_set_color(c_orange);
     draw_text(x, y + 50, "verifying...");
+}
+*/
+
+if(global.not_key){
+	draw_set_color(c_red);
+    draw_text(x, y + 50, "incorrect key");
 }
