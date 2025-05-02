@@ -58,6 +58,7 @@ if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or global.ne
 	
     if (!global.networked_action) {
         var in_staging = self.staging_size;
+        global.player1.hand_size -= in_staging;
         if (instance_exists(obj_Server)) {
             with (obj_Server) {
                 for (var i = 0; i < ds_list_size(sockets); i++) {
@@ -86,6 +87,10 @@ if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or global.ne
         }
     }
     global.networked_action = false;
+    
+    if (instance_exists(obj_Server)) {
+        obj_Server.alarm[1] = max(30 * self.staging_size, 120);
+    }
     
     next_turn();
 	
@@ -155,6 +160,10 @@ else if (ds_stack_size(global.staging_cards) > 0 and (!global.hand_is_go or glob
         
         // update the displayed last played hand (needs bluff functionality added)
         update_last_hand_string(hand_message);
+        
+        if (instance_exists(obj_Server)) {
+            obj_Server.alarm[1] = max(30 * staging_size, 120);
+        }
     }
     global.networked_action = false;
     

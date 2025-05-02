@@ -152,6 +152,13 @@ if (event_id == server) {
             event_perform(ev_mouse, ev_left_press);
         }
         
+        // decrease numeric hand size
+        with (obj_Player) {
+            if (num == other_player) {
+                hand_size -= staging_size;
+            }
+        }
+        
         // re-emit hand to other player
         for (var i = 0; i < ds_list_size(sockets); i++) {
             if (ds_list_find_value(sockets, i) != socket) {
@@ -207,6 +214,13 @@ if (event_id == server) {
             ds_list_copy(added_cards, tmp_added_cards);
             hand_message = hand_msg;
             event_perform(ev_mouse, ev_left_press);
+        }
+        
+        // decrease numeric hand size
+        with (obj_Player) {
+            if (num == other_player) {
+                hand_size -= staging_size;
+            }
         }
         
         // re-emit hand to other player

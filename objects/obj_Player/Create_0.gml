@@ -1,8 +1,7 @@
 points = 0;
 my_cards = ds_list_create();
+hand_size = ds_list_size(hand);
 var holder = self; // For the sake of using "self" within structs
-
-		//TODO: OVERHAULED AFTER FIRST PLAYABLE
 
 show_debug_message("Creating player " + string(num) + "...");
 // TODO: create positions for player 2, 3 on game level

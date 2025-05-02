@@ -71,6 +71,7 @@ if (new_available > 0) {
     
     var in_staging = stag_size;
     var hand_msg = hand_mess;
+    global.player1.hand_size -= in_staging;
     if (instance_exists(obj_Server)) {
         with (obj_Server) {
             for (var i = 0; i < ds_list_size(sockets); i++) {
@@ -91,7 +92,7 @@ if (new_available > 0) {
         with (obj_Client) {
             buffer_seek(buffer, buffer_seek_start, 1);
             buffer_write(buffer, buffer_u8, NETWORK.BLUFFED_HAND);
-            buffer_write(buffer, buffer_u8, 1);
+            buffer_write(buffer, buffer_u8, global.id_on_server);
             for (var j = ds_list_size(global.pile) - in_staging; j < ds_list_size(global.pile); j++) {
                 buffer_write(buffer, buffer_u8, ds_list_find_value(global.pile, j).card_id);
             }
@@ -101,4 +102,9 @@ if (new_available > 0) {
             network_send_packet(client_socket, buffer, buffer_tell(buffer));
         }
     }
+    
+    if (instance_exists(obj_Server)) {
+        obj_Server.alarm[1] = max(30 * in_staging, 120);
+    }
+    
 }

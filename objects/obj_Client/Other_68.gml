@@ -109,6 +109,13 @@ if (event_id == client_socket && event_id != 1) {
         }
         show_debug_message("client honest buffer read: " + string(other_card_id));
         
+        // decrease numeric hand size
+        with (obj_Player) {
+            if (num == other_player) {
+                hand_size -= ds_stack_size(global.staging_cards);
+            }
+        }
+        
         global.hand_is_go = false;
         global.building_honest_hand = true;
         with (instance_create_layer(-100, -100, "Instances", obj_PlayButton, { type: 1 })) {
@@ -135,6 +142,13 @@ if (event_id == client_socket && event_id != 1) {
         }
         show_debug_message("client honest buffer read: " + string(other_card_id));
         
+        // decrease numeric hand size
+        with (obj_Player) {
+            if (num == other_player) {
+                hand_size -= ds_stack_size(global.staging_cards);
+            }
+        }
+        
         global.supposed_top = buffer_read(connection_buffer, buffer_s8);
         
         global.hand_is_go = false;
@@ -145,6 +159,23 @@ if (event_id == client_socket && event_id != 1) {
             hand_message = buffer_read(connection_buffer, buffer_string);
             event_perform(ev_mouse, ev_left_press);
         }
+        
+    }
+    
+    else if (identifier == NETWORK.NEXT_ROUND) {
+        
+        var other_player = buffer_read(connection_buffer, buffer_u8);
+        
+        with (obj_Player) {
+            if (num == other_player) {
+                points += 1;
+            }
+            show_debug_message("player " + string(num) + " has " + string(points) + " point(s)");
+        }
+        
+        center_stack_reset();
+        flip_pot();
+        base_selecting();
         
     }
     #endregion
