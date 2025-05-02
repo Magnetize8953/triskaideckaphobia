@@ -13,3 +13,4 @@ buffer = buffer_create(16384, buffer_grow, 1);
 num_players = 1;
 
 alarm[0] = 5;
+prev_round_winner = 0;

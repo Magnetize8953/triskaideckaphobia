@@ -23,3 +23,12 @@ if (keyboard_check(ord("2"))) {
 if (keyboard_check(ord("F"))) {
 	flip_pot();
 }
+
+// make all cards faced up
+if (keyboard_check(ord("G"))) {
+    with (obj_Card) {
+        if (face_down) {
+            self.alarm[0] = 5;
+        }
+    }
+}

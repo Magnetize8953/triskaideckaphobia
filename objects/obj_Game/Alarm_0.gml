@@ -30,3 +30,5 @@ global.player2.hand = player_2_hand;
 global.player2.update_hand = true;
 global.player3.hand = player_3_hand;
 global.player3.update_hand = true;
+
+shuffling = false;

@@ -44,3 +44,5 @@ if (num == 1) {
         ds_list_add(my_cards, new_card);
     }
 }
+
+hand_size = 13;

@@ -38,14 +38,12 @@ if (event_id == server) {
         }
         
         // host hand
-        // buffer_write(buffer, buffer_u8, 1);
         buffer_write(buffer, buffer_u8, ds_list_size(obj_Game.player_1_hand));
         for (var i = 0; i < ds_list_size(obj_Game.player_1_hand); i++) {
             buffer_write(buffer, buffer_u8, ds_list_find_value(obj_Game.player_1_hand, i));
         }
         
         // other player hand
-        // buffer_write(buffer, buffer_u8, num_players == 2 ? 3 : 2);
         buffer_write(buffer, buffer_u8, ds_list_size(other_hand));
         for (var i = 0; i < ds_list_size(other_hand); i++) {
             buffer_write(buffer, buffer_u8, ds_list_find_value(other_hand, i));

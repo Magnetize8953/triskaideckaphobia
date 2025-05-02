@@ -49,8 +49,7 @@ if (event_id == client_socket && event_id != 1) {
         }
         size = buffer_read(connection_buffer, buffer_u8)
         for (var i = 0; i < size; i++) {
-            var temp = buffer_read(connection_buffer, buffer_u8)
-            ds_list_add(global.pot, temp);
+            ds_list_add(global.pot, buffer_read(connection_buffer, buffer_u8));
         }
         global.pot_obj.hand = global.pot;
         global.pot_obj.alarm[0] = 5;
@@ -172,6 +171,47 @@ if (event_id == client_socket && event_id != 1) {
             }
             show_debug_message("player " + string(num) + " has " + string(points) + " point(s)");
         }
+        
+        // reset player nums for card placement
+        global.player1.num = 1;
+        global.player2.num = 2;
+        global.player3.num = 3;
+        
+        ds_list_clear(global.player1.hand);
+        var size = buffer_read(connection_buffer, buffer_u8)
+        for (var i = 0; i < size; i++) {
+            ds_list_add(global.player1.hand, buffer_read(connection_buffer, buffer_u8));
+        }
+        global.player1.update_hand = true;
+        
+        ds_list_clear(global.player2.hand);
+        size = buffer_read(connection_buffer, buffer_u8)
+        for (var i = 0; i < size; i++) {
+            ds_list_add(global.player2.hand, buffer_read(connection_buffer, buffer_u8));
+        }
+        global.player2.update_hand = true;
+        
+        ds_list_clear(global.player3.hand);
+        size = buffer_read(connection_buffer, buffer_u8)
+        for (var i = 0; i < size; i++) {
+            ds_list_add(global.player3.hand, buffer_read(connection_buffer, buffer_u8));
+        }
+        global.player3.update_hand = true;
+        
+        show_debug_message("resetting hand pool...")
+        ds_list_clear(global.hand_pool);
+        ds_list_concat(global.hand_pool, global.player1.hand);
+        ds_list_concat(global.hand_pool, global.player2.hand);
+        ds_list_concat(global.hand_pool, global.player3.hand);
+        
+        show_debug_message("resetting hand object pool...")
+        ds_list_clear(global.hand_obj_pool);
+        ds_list_concat(global.hand_obj_pool, global.player1.my_cards);
+        ds_list_concat(global.hand_obj_pool, global.player2.my_cards);
+        ds_list_concat(global.hand_obj_pool, global.player3.my_cards);
+        
+        // re-reset player id number
+        alarm[1] = 15;
         
         center_stack_reset();
         flip_pot();
