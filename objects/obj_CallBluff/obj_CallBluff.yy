@@ -1,12 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_NumberButton",
+  "%Name":"obj_CallBluff",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_NumberButton",
+  "name":"obj_CallBluff",
   "overriddenProperties":[],
   "parent":{
     "name":"Buttons",
@@ -27,15 +28,15 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"num","filters":[],"listItems":[],"multiselect":false,"name":"num","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-    {"$GMObjectProperty":"v1","%Name":"prompter","filters":[],"listItems":[],"multiselect":false,"name":"prompter","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
+    {"$GMObjectProperty":"v1","%Name":"prev_hand","filters":[],"listItems":[],"multiselect":false,"name":"prev_hand","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":6,},
+    {"$GMObjectProperty":"v1","%Name":"bluffing_player","filters":[],"listItems":[],"multiselect":false,"name":"bluffing_player","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_NumberButton",
-    "path":"sprites/spr_NumberButton/spr_NumberButton.yy",
+    "name":"spr_DEVART_Bluff",
+    "path":"sprites/spr_DEVART_Bluff/spr_DEVART_Bluff.yy",
   },
   "spriteMaskId":null,
   "visible":true,

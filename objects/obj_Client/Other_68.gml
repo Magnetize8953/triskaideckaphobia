@@ -159,6 +159,9 @@ if (event_id == client_socket && event_id != 1) {
             event_perform(ev_mouse, ev_left_press);
         }
         
+        // bluff calling
+        instance_create_layer(room_width / 2, 1080 * (565 / 768), "Instances", obj_CallBluff, { prev_hand: tmp_added_cards, bluffing_player: other_player });
+        
     }
     
     else if (identifier == NETWORK.NEXT_ROUND) {

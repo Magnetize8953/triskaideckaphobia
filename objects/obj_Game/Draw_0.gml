@@ -1,4 +1,4 @@
-draw_text(room_width / 2 - 40, 90, "Current Player: " + string(global.current_turn));
+draw_text(room_width / 2 - 40, 90, "Current Player: " + string(global.current_turn) + ". Points: " + string(global.player1.points));
 
 draw_text(room_width / 2 - 160, 130, global.last_hand_message);
 

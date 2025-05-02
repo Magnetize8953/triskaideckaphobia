@@ -214,6 +214,9 @@ if (event_id == server) {
             event_perform(ev_mouse, ev_left_press);
         }
         
+        // bluff calling
+        instance_create_layer(room_width / 2, 1080 * (565 / 768), "Instances", obj_CallBluff, { prev_hand: tmp_added_cards, bluffing_player: other_player });
+        
         // decrease numeric hand size
         with (obj_Player) {
             if (num == other_player) {
@@ -235,6 +238,42 @@ if (event_id == server) {
                 buffer_write(buffer, buffer_string, hand_msg);
                 network_send_packet(ds_list_find_value(sockets, i), buffer, buffer_tell(buffer));
             }
+        }
+        
+    }
+    
+    else if (identifier == NETWORK.BLUFF_CALLED) {
+        
+        var calling_player_id = buffer_read(connection_buffer, buffer_u8);
+        var bluffing_player_id = buffer_read(connection_buffer, buffer_u8);
+        var successful_call = buffer_read(connection_buffer, buffer_bool);
+        
+        if (successful_call) {
+            
+            show_debug_message("bluff successfully called on " + string(bluffing_player_id) + " by " + string(calling_player_id));
+            
+            var calling_player_obj;
+            with (obj_Player) {
+                if (num == calling_player_id) {
+                    calling_player_obj = self;
+                }
+            }
+            calling_player_obj.hand_size = 0;
+            self.alarm[1] = 5;
+            
+        } else {
+            
+            show_debug_message("bluff unsuccessfully called on " + string(bluffing_player_id) + " by " + string(calling_player_id));
+            
+            var bluffing_player_obj;
+            with (obj_Player) {
+                if (num == bluffing_player_id) {
+                    bluffing_player_obj = self;
+                }
+            }
+            bluffing_player_obj.hand_size = 0;
+            self.alarm[1] = 5;
+            
         }
         
     }
