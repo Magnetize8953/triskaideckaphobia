@@ -83,3 +83,5 @@ global.last_hand_message = ""; //string with message that will be manually reset
 // networking
 global.networked_action = false;
 shuffling = false;
+
+global.winner = 0;

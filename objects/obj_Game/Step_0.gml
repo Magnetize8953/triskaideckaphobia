@@ -32,3 +32,8 @@ if (keyboard_check(ord("G"))) {
         }
     }
 }
+
+// increase own points
+if (keyboard_check(ord("P"))) {
+    global.player1.points += 1;
+}

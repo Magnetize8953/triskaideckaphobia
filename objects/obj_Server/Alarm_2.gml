@@ -1,3 +1,28 @@
+// check win status
+if ((global.player1.points >= 7) or (global.player2.points >= 7) or (global.player3.points >= 7)) {
+    
+    if (global.player1.points >= 7) {
+        global.winner = 1;
+    } else if (global.player2.points >= 7) {
+        global.winner = 2;
+    } else {
+        global.winner = 3;
+    }
+    
+    // send out winner info
+    for (var i = 0; i < ds_list_size(sockets); i++) {
+        buffer_seek(buffer, buffer_seek_start, 1);
+        buffer_write(buffer, buffer_u8, NETWORK.GAME_OVER);
+        buffer_write(buffer, buffer_u8, global.winner);
+        network_send_packet(ds_list_find_value(sockets, i), buffer, buffer_tell(buffer));
+    }
+    
+    // go to game end room
+    obj_Game.alarm[1] = 60 * 2;
+    return;
+    
+}
+
 // emit new cards
 if (obj_Game.shuffling and ((ds_list_size(global.player1.my_cards) != 13) and (ds_list_size(global.player2.my_cards) != 13) and (ds_list_size(global.player3.my_cards) != 13))) {
     alarm[2] = 5;

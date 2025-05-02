@@ -57,6 +57,7 @@
     {"id":{"name":"obj_Pot","path":"objects/obj_Pot/obj_Pot.yy",},},
     {"id":{"name":"obj_PotCard","path":"objects/obj_PotCard/obj_PotCard.yy",},},
     {"id":{"name":"obj_Server","path":"objects/obj_Server/obj_Server.yy",},},
+    {"id":{"name":"rm_GameEnd","path":"rooms/rm_GameEnd/rm_GameEnd.yy",},},
     {"id":{"name":"rm_GameRoom","path":"rooms/rm_GameRoom/rm_GameRoom.yy",},},
     {"id":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},},
     {"id":{"name":"scr_BaseSelecting","path":"scripts/scr_BaseSelecting/scr_BaseSelecting.yy",},},
@@ -91,6 +92,7 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},},
     {"roomId":{"name":"rm_GameRoom","path":"rooms/rm_GameRoom/rm_GameRoom.yy",},},
+    {"roomId":{"name":"rm_GameEnd","path":"rooms/rm_GameEnd/rm_GameEnd.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

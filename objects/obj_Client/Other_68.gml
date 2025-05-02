@@ -221,6 +221,13 @@ if (event_id == client_socket && event_id != 1) {
         base_selecting();
         
     }
+    
+    else if (identifier == NETWORK.GAME_OVER) {
+        
+        global.winner = buffer_read(connection_buffer, buffer_u8);
+        obj_Game.alarm[1] = 60 * 2;
+        
+    }
     #endregion
     
 }
