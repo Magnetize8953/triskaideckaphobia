@@ -27,10 +27,11 @@ for (var yy = 0; yy < grid_h; yy++) {
         v      = (v - 0.5) * contrast + 0.5
         v      = clamp(v, 0, 1)
         // deepen dark regions
-        if v < threshold v = 0
-
-        var redVal = floor(v * 255)
-        draw_set_color(make_color_rgb(redVal, 0, 0))
+        if (v < threshold) { v = 0 }
+        var r = floor(v * red);
+        var g = floor(v * green);
+        var b = floor(v * blue);
+        draw_set_color(make_color_rgb(r, g, b))
         draw_rectangle(
             xx * cw, yy * ch,
             (xx + 1) * cw, (yy + 1) * ch,
