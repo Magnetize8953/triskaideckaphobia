@@ -51,6 +51,8 @@ if (instance_exists(obj_Tutorial) and !global.base_card_exists and global.card_b
     ds_list_add(global.pile, self);
     
     global.supposed_top = self.card_id;
+	
+	next_turn();
     
     if (!global.networked_action) {
         var card_id = self.card_id;

@@ -15,13 +15,15 @@
     {"name":"inst_63416D10","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},
     {"name":"inst_428837EC","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},
     {"name":"inst_382C561F","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},
+    {"name":"inst_3A1266A7","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},
   ],
   "isDnd":false,
   "layers":[
     {"$GMRAssetLayer":"","%Name":"Assets_1","assets":[
-        {"$GMRSpriteGraphic":"","%Name":"graphic_7BFDC139","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_7BFDC139","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"spr_Logo","path":"sprites/spr_Logo/spr_Logo.yy",},"x":560.5,"y":32.0,},
+        {"$GMRSpriteGraphic":"","%Name":"graphic_7BFDC139","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":true,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_7BFDC139","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"spr_Logo","path":"sprites/spr_Logo/spr_Logo.yy",},"x":1024.0,"y":256.0,},
       ],"depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Assets_1","properties":[],"resourceType":"GMRAssetLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
+        {"$GMRInstance":"v1","%Name":"inst_3A1266A7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3A1266A7","objectId":{"name":"obj_Logo","path":"objects/obj_Logo/obj_Logo.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1024.0,"y":256.0,},
         {"$GMRInstance":"v1","%Name":"inst_7E08435B","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7E08435B","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"option_name","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Play",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"propertyId":{"name":"text_colour","path":"objects/obj_MenuButton/obj_MenuButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"$FFFFFFFF",},

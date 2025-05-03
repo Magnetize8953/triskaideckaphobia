@@ -54,6 +54,7 @@
     {"id":{"name":"obj_Game","path":"objects/obj_Game/obj_Game.yy",},},
     {"id":{"name":"obj_HonestButton","path":"objects/obj_HonestButton/obj_HonestButton.yy",},},
     {"id":{"name":"obj_InitNetwork","path":"objects/obj_InitNetwork/obj_InitNetwork.yy",},},
+    {"id":{"name":"obj_Logo","path":"objects/obj_Logo/obj_Logo.yy",},},
     {"id":{"name":"obj_MenuButton","path":"objects/obj_MenuButton/obj_MenuButton.yy",},},
     {"id":{"name":"obj_Music","path":"objects/obj_Music/obj_Music.yy",},},
     {"id":{"name":"obj_NumberButton","path":"objects/obj_NumberButton/obj_NumberButton.yy",},},

@@ -22,6 +22,12 @@ Call People Out: If you think your opponent is lying, call them out and maybe wi
 Achieving Victory: Finish the game by being the first to reach 7 points!
 
 
+## Cheat Codes
+G: Make all cards face-up
+P: Increase own points
+Backspace: Skip turn
+
+
 ## Licensing
 "One Sly Move" Kevin MacLeod (incompetech.com).
 Licensed under Creative Commons: By Attribution 4.0 License.
