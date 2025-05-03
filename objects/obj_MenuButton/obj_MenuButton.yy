@@ -35,6 +35,9 @@
     {"$GMObjectProperty":"v1","%Name":"other_room","filters":[
         "GMRoom",
       ],"listItems":[],"multiselect":false,"name":"other_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
+    {"$GMObjectProperty":"v1","%Name":"obj","filters":[
+        "GMObject",
+      ],"listItems":[],"multiselect":false,"name":"obj","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

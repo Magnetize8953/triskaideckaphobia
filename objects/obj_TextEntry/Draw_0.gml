@@ -1,10 +1,10 @@
 /// obj_textbox – Draw
 // box
 draw_set_color(c_white);
-draw_rectangle(x, y, x + 200, y + 30, false);
+// draw_rectangle(x, y, x + 200, y + 30, false);
 
 // typed text
-draw_set_color(c_black);
+draw_set_color(c_white);
 draw_text(x + 5, y + 15, text_input);
 
 // blinking cursor

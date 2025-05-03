@@ -33,6 +33,8 @@ spacing += 2;
 draw_text_transformed_color(room_center, y + ((font_get_size(fnt_Menu) + 50) * spacing - pos), "Art", 1.5, 1.5, 0, c_white, c_white, c_white, c_white, 1);
 spacing += 1;
 draw_text_color(room_center, y + ((font_get_size(fnt_Menu) + 50) * spacing - pos), "AJFU, Wikimedia Commons; Bonnie Springs slot machine", c_white, c_white, c_white, c_white, 1);
+spacing += 1;
+draw_text_color(room_center, y + ((font_get_size(fnt_Menu) + 50) * spacing - pos), "Dominic Dobrzensky, Wikimedia Commons; Markiplier in 2015", c_white, c_white, c_white, c_white, 1);
 spacing += 2;
 
 

@@ -72,6 +72,7 @@
     {"id":{"name":"rm_GameRoom","path":"rooms/rm_GameRoom/rm_GameRoom.yy",},},
     {"id":{"name":"rm_MainMenu","path":"rooms/rm_MainMenu/rm_MainMenu.yy",},},
     {"id":{"name":"rm_Micro","path":"rooms/rm_Micro/rm_Micro.yy",},},
+    {"id":{"name":"rm_SelectMultiplayer","path":"rooms/rm_SelectMultiplayer/rm_SelectMultiplayer.yy",},},
     {"id":{"name":"scr_BaseSelecting","path":"scripts/scr_BaseSelecting/scr_BaseSelecting.yy",},},
     {"id":{"name":"scr_BluffPlay","path":"scripts/scr_BluffPlay/scr_BluffPlay.yy",},},
     {"id":{"name":"scr_CardString","path":"scripts/scr_CardString/scr_CardString.yy",},},
@@ -112,6 +113,7 @@
     {"roomId":{"name":"rm_GameEnd","path":"rooms/rm_GameEnd/rm_GameEnd.yy",},},
     {"roomId":{"name":"rm_Micro","path":"rooms/rm_Micro/rm_Micro.yy",},},
     {"roomId":{"name":"rm_Credits","path":"rooms/rm_Credits/rm_Credits.yy",},},
+    {"roomId":{"name":"rm_SelectMultiplayer","path":"rooms/rm_SelectMultiplayer/rm_SelectMultiplayer.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
