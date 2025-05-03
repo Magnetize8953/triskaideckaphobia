@@ -1,0 +1,1 @@
+global.background_music = audio_play_sound(snd_Music, 1, true);
