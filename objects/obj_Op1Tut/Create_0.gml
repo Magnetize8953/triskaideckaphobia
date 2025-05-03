@@ -13,5 +13,3 @@ for (i = 0; i < 13; i++) {
 	card_made.face_down = true;
 }
 
-//dummy test
-alarm[0] = 1;
