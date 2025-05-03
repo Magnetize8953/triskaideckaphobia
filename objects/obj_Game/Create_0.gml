@@ -85,3 +85,5 @@ global.networked_action = false;
 shuffling = false;
 
 global.winner = 0;
+
+show_debug_message("GLOBAL VARIABLE ******" + string(global.is_Premium) + "******");
