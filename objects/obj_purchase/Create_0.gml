@@ -1,3 +1,0 @@
-
-
-global.poll_request   = -1;

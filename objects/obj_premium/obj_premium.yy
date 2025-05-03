@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_premium",
+  "%Name":"obj_Premium",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_premium",
+  "name":"obj_Premium",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Microtransactions",
+    "path":"folders/Objects/Microtransactions.yy",
   },
   "parentObjectId":null,
   "persistent":true,

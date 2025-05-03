@@ -28,5 +28,5 @@ if (code == 200) {
 global.poll_request = -1;
 
 // clear the textbox’s “verifying…” flag
-var tb2 = instance_find(obj_textbox, 0);
+var tb2 = instance_find(obj_TextEntry, 0);
 if (tb2 != noone) tb2.awaiting_response = false;

@@ -1,6 +1,6 @@
 /// obj_submit – Left Pressed
 // grab the single textbox in the room
-var tb = instance_find(obj_textbox, 0);
+var tb = instance_find(obj_TextEntry, 0);
 if (tb != noone && tb.text_input != "") {
     // send a POST /verify with our key
     global.poll_request = http_request(
