@@ -40,45 +40,38 @@ if (ds_stack_size(passed_cards) > 0 and !global.hand_is_go and type == 0) {
 	with(obj_Tutorial) {
 		layer_sprite_destroy(fifteenth_text);
 		layer_sprite_destroy(sixteenth_text);
+		op1.alarm[1] = 100;
 	}
 }
 
-/*
-else if (ds_stack_size(global.staging_cards) > 0 and !global.hand_is_go and global.building_bluffed_hand){
+
+else if (ds_stack_size(passed_cards) > 0 and !global.hand_is_go and type == 1){
+	with (obj_Tutorial) {
+		layer_sprite_destroy(nineteenth_text);
+		layer_sprite_destroy(twentieth_text);
+	}
+	
 	// Disable it happening a second time, to start
 	global.hand_is_go = true;
 	
 	// make self invisible
 	self.image_alpha = 0;
-	
-	// Turn off the honest hand tracking, because we don't need that anymore
-	global.building_bluffed_hand = false;
-	
-	show_debug_message("Current stack size: " + string(ds_stack_size(global.staging_cards)));
-	show_debug_message("Top of stack: " + string(ds_stack_top(global.staging_cards)));
-	
-    
+ 
     // reverse stack
     staging_reversed = ds_stack_create();
-    staging_size = ds_stack_size(global.staging_cards);
+    staging_size = ds_stack_size(passed_cards);
     for (var i = 0; i < staging_size; i++) {
-        ds_stack_push(staging_reversed, ds_stack_pop(global.staging_cards));
+		var card = ds_stack_pop(passed_cards);
+		card.flipping = true;
+		card.alarm[0] = 5;
+        ds_stack_push(staging_reversed, card);
     }
-    
-	
-	for (var i = 0; i < staging_size; i++) {
-		// If the card isn't flipping yet, start it flipping
-		if (!ds_list_find_value(added_cards, i).flipping) {
-			ds_list_find_value(added_cards, i).flipping = true;
-			ds_list_find_value(added_cards, i).alarm[0] = 5;
-		}
-	}
 	// Go to alarm to wait for cards to flip
 	alarm[0] = 5;
 	
 } 
-*/
 
-if (global.hand_is_go) {
+
+if (global.hand_is_go and type != 1) {
 	instance_destroy();
 }

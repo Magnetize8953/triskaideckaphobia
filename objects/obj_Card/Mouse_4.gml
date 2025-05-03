@@ -33,6 +33,23 @@ with (obj_Tutorial) {
 		ds_stack_push(collected_cards, other);
 		instance_create_layer(room_width / 2, 1080 * (565/768), "Instances", obj_TutPlayButton, {passed_cards: collected_cards});
 	}
+	
+	else if (needA and other.card_id == 27) {
+		 other.y -= 15;
+		 needA = false;
+		 ds_stack_push(collected_cards, other);
+		 instance_destroy(second_arrow);
+	} else if (need9 and other.card_id == 9) {
+		other.y -= 15;
+		need9 = false;
+		ds_stack_push(collected_cards, other);
+		instance_destroy(first_arrow);
+	} else if (need10 and other.card_id == 36) {
+		other.y -= 15;
+		need10 = false;
+		ds_stack_push(collected_cards, other);
+		instance_destroy(third_arrow);
+	}
 }
 
 // If an honest hand is being built and it's my turn (and also im not in the center)

@@ -31,6 +31,7 @@ op2 = instance_create_layer(10,0, "Instances", obj_Op2Tut, {hand: op2_hand});
 //dummy pot, first is 1
 dummy_pot = [1, 10, 13, 14, 28, 30, 39, 42, 46, 47, 48, 49, 50];
 global.pot_cards = ds_list_create();
+_card_sprite_width = sprite_get_width(spr_Cards) * 0.25;
 for (i = 0; i < 13; i++) {
 	_card = dummy_pot[i]; // an integer corresponding to the card id
     _card_sprite_width = sprite_get_width(spr_Cards) * 0.25;
@@ -84,7 +85,30 @@ need5 = false;
 
 collected_cards = ds_stack_create();
 // 4. two more go around – 5, 6, 6; 6, 7
-// 5. Play bluffed hand – some ace, 7, and 9 combo, bluffing one 7 and two 8s
+post_4_text = 360;
+seventeenth_text = noone;
+eighteenth_text = noone;
+// 5. Play bluffed hand – some ace, 9, and 10 combo, bluffing one 7 and two 8s
+nin_twe = false;
+nineteenth_text = noone;
+twentieth_text = noone;
+first_arrow = noone;
+needA = false;
+second_arrow = noone;
+need9 = false;
+third_arrow = noone;
+need10 = false;
+play_button = noone;
+
+tweone_twetwo = false;
+text_21 = noone;
+text_22 = noone;
+first_button = noone;
+second_button = noone;
+
+twethre_twefou = false;
+text_23 = noone;
+text_24 = noone;
 // 6. Player gets warning about bluffing and those win/lose conditions explained to them
 // 7. One more pass around – bluffed 8, 8, 9, 9; bluffed 9, 10, J
 // 8. They empty their hand and win honestly (play J, J, Q, K, K, A)
